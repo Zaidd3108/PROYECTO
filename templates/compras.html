@@ -13,22 +13,46 @@
 
     <div class="carrito-page">
 
-        <h1>🛒 Historial de Compras</h1>
+        <h1>
+            🛒 Historial de Compras
+        </h1>
 
-        <p>
+        <h3>
             Bienvenido {{ usuario }}
-        </p>
+        </h3>
 
         <br>
 
-        <p>
-            Aún no tienes compras registradas.
-        </p>
+        {% if compras %}
+
+            {% for compra in compras %}
+
+                <div class="item-carrito">
+
+                    <span>
+                        Compra #{{ loop.index }}
+                    </span>
+
+                    <span>
+                        S/ {{ "%.2f"|format(compra.total) }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="vacio">
+                No tienes compras registradas.
+            </p>
+
+        {% endif %}
 
         <br>
 
-        <a href="/">
-            ⬅ Volver a la tienda
+        <a href="/" class="btn-pagar">
+            Volver a la tienda
         </a>
 
     </div>
