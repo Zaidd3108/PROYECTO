@@ -123,6 +123,31 @@ def eliminar(index):
 
     return redirect(url_for("ver_carrito"))
 
+@app.route("/sumar/<int:id>")
+def sumar(id):
+
+    for item in carrito:
+
+        if item["id"] == id:
+            item["cantidad"] += 1
+
+    return redirect(url_for("ver_carrito"))
+
+
+@app.route("/restar/<int:id>")
+def restar(id):
+
+    for item in carrito:
+
+        if item["id"] == id:
+            item["cantidad"] -= 1
+            if item["cantidad"] <= 0:
+                carrito.remove(item)
+
+            break
+
+    return redirect(url_for("ver_carrito"))
+
 # LOGIN
 @app.route("/login", methods=["GET", "POST"])
 def login():
