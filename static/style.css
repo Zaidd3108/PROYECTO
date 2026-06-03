@@ -215,3 +215,16 @@ header {
     margin-top: 20px;
     font-size: 20px;
 }
+
+.sin-resultados{
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#d50000;
+
+    margin:40px;
+}
