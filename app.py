@@ -17,27 +17,14 @@ productos = [
 # CARRITO
 carrito = []
 
-# PÁGINA PRINCIPAL + BUSCADOR
+# PÁGINA PRINCIPAL
 @app.route("/")
 def inicio():
 
-    busqueda = request.args.get("buscar", "").strip()
-
-    print("BUSQUEDA:", busqueda)
-
-    if busqueda:
-        productos_filtrados = [
-            p for p in productos
-            if busqueda.lower() in p["nombre"].lower()
-        ]
-    else:
-        productos_filtrados = productos
-
     return render_template(
         "index.html",
-        productos=productos_filtrados,
-        carrito=carrito,
-        busqueda=busqueda
+        productos=productos,
+        carrito=carrito
     )
 
 # AGREGAR AL CARRITO
