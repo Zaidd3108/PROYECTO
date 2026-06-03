@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Boleta</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="carrito-page">
+
+        <h1>🧾 Boleta de Compra</h1>
+
+        <p>
+            Cliente:
+            <strong>{{ compra.usuario }}</strong>
+        </p>
+
+        <br>
+
+        {% for item in compra.productos %}
+
+        <div class="item-carrito">
+
+            <span>
+                {{ item.nombre }}
+                x{{ item.cantidad }}
+            </span>
+
+            <span>
+                S/
+                {{ "%.2f"|format(item.precio * item.cantidad) }}
+            </span>
+
+        </div>
+
+        {% endfor %}
+
+        <h2 class="total">
+
+            TOTAL:
+            S/ {{ "%.2f"|format(compra.total) }}
+
+        </h2>
+
+        <br>
+
+        <h3>
+            ✅ Gracias por su compra
+        </h3>
+
+        <br>
+
+        <a href="/" class="btn-pagar">
+            Volver a la tienda
+        </a>
+
+    </div>
+
+</body>
+
+</html>
