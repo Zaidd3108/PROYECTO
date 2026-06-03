@@ -76,7 +76,8 @@ def inicio():
         productos=productos_filtrados,
         carrito=carrito,
         busqueda=busqueda,
-        categoria=categoria
+        categoria=categoria,
+        usuario=session.get("usuario")
     )
 
 # AGREGAR AL CARRITO
@@ -99,7 +100,8 @@ def ver_carrito():
     return render_template(
         "carrito.html",
         carrito=carrito,
-        total=total
+        total=total,
+        usuario=session.get("usuario")
     )
 
 # ELIMINAR PRODUCTO
@@ -124,7 +126,9 @@ def login():
         password = request.form["password"]
 
         if usuario == USUARIO_CORRECTO and password == PASSWORD_CORRECTO:
+
             session["usuario"] = usuario
+
             return redirect(url_for("inicio"))
 
         else:
@@ -133,17 +137,12 @@ def login():
             clase = "incorrecto"
 
     return render_template(
-    "index.html",
-    productos=productos_filtrados,
-    carrito=carrito,
-    busqueda=busqueda,
-    categoria=categoria,
-    usuario=session.get("usuario")
-)
+        "login.html",
+        mensaje=mensaje,
+        clase=clase
+    )
 
-if __name__ == "__main__":
-    app.run(debug=True)
-
+# CERRAR SESIÓN
 @app.route("/logout")
 def logout():
 
@@ -151,7 +150,7 @@ def logout():
 
     return redirect(url_for("inicio"))
 
-
+# MIS COMPRAS
 @app.route("/compras")
 def compras():
 
@@ -162,3 +161,6 @@ def compras():
         "compras.html",
         usuario=session["usuario"]
     )
+
+if __name__ == "__main__":
+    app.run(debug=True)
