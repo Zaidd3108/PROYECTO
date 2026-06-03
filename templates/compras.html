@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Compras</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="carrito-page">
+
+        <h1>🛒 Historial de Compras</h1>
+
+        <p>
+            Bienvenido {{ usuario }}
+        </p>
+
+        <br>
+
+        <p>
+            Aún no tienes compras registradas.
+        </p>
+
+        <br>
+
+        <a href="/">
+            ⬅ Volver a la tienda
+        </a>
+
+    </div>
+
+</body>
+
+</html>
