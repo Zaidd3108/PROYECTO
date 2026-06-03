@@ -23,6 +23,8 @@ def inicio():
 
     busqueda = request.args.get("buscar", "").strip()
 
+    print("BUSQUEDA:", busqueda)
+
     if busqueda:
         productos_filtrados = [
             p for p in productos
