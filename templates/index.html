@@ -21,7 +21,12 @@
 
             <form method="GET" action="/" class="form-busqueda">
 
-                <input type="text" name="buscar" placeholder="¿Qué buscas hoy?" value="{{ busqueda }}">
+                <input
+                    type="text"
+                    name="buscar"
+                    placeholder="¿Qué buscas hoy?"
+                    value="{{ busqueda }}"
+                >
 
                 <button type="submit">🔍</button>
 
@@ -31,30 +36,12 @@
 
         <div class="menu">
 
-            {% if usuario %}
+            <a href="/login">👤 Mi Cuenta</a>
 
-            <div class="dropdown">
-
-                <button class="dropbtn">
-                    👤 {{ usuario }}
-                </button>
-                <div class="dropdown-content">
-
-                    <a href="/compras">
-                        🛒 Mis compras
-                    </a>
-                    <a href="/logout">
-                        🚪 Cerrar sesión
-                    </a>
-                </div>
-
-            </div>
-            {% else %}
-
-            <a href="/login">
-                👤 Mi Cuenta
+            <a href="/carrito">
+                🛍 Carrito ({{ carrito|length }})
             </a>
-            {% endif %}
+
         </div>
 
     </header>
@@ -124,11 +111,11 @@
             {% endif %}
 
             {% if producto.id == 5 %}
-            <img src="https://plazavea.vteximg.com.br/arquivos/ids/553934-1000-1000/20119706.jpg">
+            <img src="https://plazavea.vteximg.com.br/arquivos/ids/24844290-1000-1000/21130.jpg">
             {% endif %}
 
             {% if producto.id == 6 %}
-            <img src="https://plazavea.vteximg.com.br/arquivos/ids/554527-1000-1000/20280574.jpg">
+            <img src="https://wongfood.vtexassets.com/arquivos/ids/757831-1600-auto?v=638768147471670000&width=1600&height=auto&aspect=true">
             {% endif %}
 
             <h2>{{ producto.nombre }}</h2>
