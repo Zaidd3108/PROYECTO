@@ -200,5 +200,20 @@ def compras():
         usuario=session["usuario"]
     )
 
+@app.route("/pagar")
+def pagar():
+
+    total = sum(
+        item["precio"] * item["cantidad"]
+        for item in carrito
+    )
+
+    return render_template(
+        "pagar.html",
+        carrito=carrito,
+        total=total,
+        usuario=session.get("usuario")
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)
