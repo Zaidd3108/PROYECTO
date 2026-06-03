@@ -124,9 +124,8 @@ def login():
         password = request.form["password"]
 
         if usuario == USUARIO_CORRECTO and password == PASSWORD_CORRECTO:
-
-            mensaje = "✅ Bienvenido Zaidd"
-            clase = "correcto"
+            session["usuario"] = usuario
+            return redirect(url_for("inicio"))
 
         else:
 
