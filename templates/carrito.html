@@ -4,47 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <title>Carrito</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
+
     <header>
+
         <div class="logo">
             🛒 Abarrotes Zaidd
         </div>
+
         <div class="menu">
             <a href="/">🏠 Inicio</a>
-            <a href="/login">👤 Mi Cuenta</a>
+
+            {% if usuario %}
+                <a href="/compras">👤 {{ usuario }}</a>
+            {% else %}
+                <a href="/login">👤 Iniciar Sesión</a>
+            {% endif %}
         </div>
+
     </header>
 
     <div class="carrito-page">
+
         <h1>
             🛍 Mi Carrito
         </h1>
-        {% if carrito %}
-        {% for item in carrito %}
-        <div class="item-carrito">
-            <span>
-                {{ item.nombre }}
-            </span>
-            <span>
-                S/ {{ item.precio }}
-            </span>
-            <a href="/eliminar/{{ loop.index0 }}">
-                ❌
-            </a>
-        </div>
 
-        {% endfor %}
-        <h2 class="total">
-            Total: S/ {{ total }}
-        </h2>
+        {% if carrito %}
+
+            {% for item in carrito %}
+
+            <div class="item-carrito">
+
+                <div>
+
+                    <h3>{{ item.nombre }}</h3>
+
+                    <p>
+                        Precio: S/ {{ item.precio }}
+                    </p>
+
+                    <p>
+                        Subtotal:
+                        S/ {{ "%.2f"|format(item.precio * item.cantidad) }}
+                    </p>
+
+                </div>
+
+                <div class="controles-cantidad">
+
+                    <a href="/restar/{{ item.id }}" class="btn-cantidad">
+                        ➖
+                    </a>
+
+                    <span class="cantidad">
+                        {{ item.cantidad }}
+                    </span>
+
+                    <a href="/sumar/{{ item.id }}" class="btn-cantidad">
+                        ➕
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+            <h2 class="total">
+                Total General: S/ {{ "%.2f"|format(total) }}
+            </h2>
+
         {% else %}
-        <p class="vacio">
-            El carrito está vacío
-        </p>
+
+            <p class="vacio">
+                El carrito está vacío 🛒
+            </p>
+
         {% endif %}
+
     </div>
+
 </body>
+
 </html>
