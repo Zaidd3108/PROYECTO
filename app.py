@@ -17,7 +17,7 @@ productos = [
 # CARRITO
 carrito = []
 
-# PÁGINA PRINCIPAL
+# PÁGINA PRINCIPAL + BUSCADOR
 @app.route("/")
 def inicio():
 
