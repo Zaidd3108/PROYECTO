@@ -189,18 +189,6 @@ def logout():
 
     return redirect(url_for("inicio"))
 
-# MIS COMPRAS
-@app.route("/compras")
-def compras():
-
-    if "usuario" not in session:
-        return redirect(url_for("login"))
-
-    return render_template(
-        "compras.html",
-        usuario=session["usuario"]
-    )
-
 @app.route("/pagar")
 def pagar():
 
@@ -241,7 +229,7 @@ def confirmar():
         compra=compra
     )
 
-
+#COMPRAS
 @app.route("/compras")
 def compras():
 
