@@ -239,3 +239,24 @@ header {
     color: #d50000;
     margin: 40px;
 }
+
+.categorias{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:20px;
+    background:white;
+}
+
+.categorias a{
+    text-decoration:none;
+    background:#ffd600;
+    color:black;
+    padding:10px 20px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.categorias a:hover{
+    background:#ffcc00;
+}
