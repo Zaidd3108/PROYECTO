@@ -21,12 +21,7 @@
 
             <form method="GET" action="/" class="form-busqueda">
 
-                <input
-                    type="text"
-                    name="buscar"
-                    placeholder="¿Qué buscas hoy?"
-                    value="{{ busqueda }}"
-                >
+                <input type="text" name="buscar" placeholder="¿Qué buscas hoy?" value="{{ busqueda }}">
 
                 <button type="submit">🔍</button>
 
@@ -36,12 +31,30 @@
 
         <div class="menu">
 
-            <a href="/login">👤 Mi Cuenta</a>
+            {% if usuario %}
 
-            <a href="/carrito">
-                🛍 Carrito ({{ carrito|length }})
+            <div class="dropdown">
+
+                <button class="dropbtn">
+                    👤 {{ usuario }}
+                </button>
+                <div class="dropdown-content">
+
+                    <a href="/compras">
+                        🛒 Mis compras
+                    </a>
+                    <a href="/logout">
+                        🚪 Cerrar sesión
+                    </a>
+                </div>
+
+            </div>
+            {% else %}
+
+            <a href="/login">
+                👤 Mi Cuenta
             </a>
-
+            {% endif %}
         </div>
 
     </header>
