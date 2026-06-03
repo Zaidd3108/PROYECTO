@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pago</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="carrito-page">
+
+        <h1>🧾 Resumen de Compra</h1>
+
+        {% for item in carrito %}
+
+        <div class="item-carrito">
+
+            <span>
+                {{ item.nombre }} x {{ item.cantidad }}
+            </span>
+
+            <span>
+                S/ {{ "%.2f"|format(item.precio * item.cantidad) }}
+            </span>
+
+        </div>
+
+        {% endfor %}
+
+        <h2 class="total">
+            Total a pagar: S/ {{ "%.2f"|format(total) }}
+        </h2>
+
+        <br>
+
+        <button class="btn-pagar">
+            ✅ Confirmar Pedido
+        </button>
+
+        <br><br>
+
+        <a href="/">
+            ⬅ Volver a la tienda
+        </a>
+
+    </div>
+
+</body>
+
+</html>
