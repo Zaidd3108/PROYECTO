@@ -20,13 +20,16 @@
         <div class="buscador">
 
             <form method="GET" action="/" class="form-busqueda">
-                <input 
-                type="text" 
-                name="buscar" 
-                placeholder="¿Qué buscas hoy?" 
-                value="{{ busqueda }}"
+
+                <input
+                    type="text"
+                    name="buscar"
+                    placeholder="¿Qué buscas hoy?"
+                    value="{{ busqueda }}"
                 >
+
                 <button type="submit">🔍</button>
+
             </form>
 
         </div>
@@ -52,6 +55,30 @@
         </p>
 
     </section>
+
+    <!-- CATEGORÍAS -->
+
+    <div class="categorias">
+
+        <a href="/">🛒 Todos</a>
+
+        <a href="/?categoria=Abarrotes">
+            🥫 Abarrotes
+        </a>
+
+        <a href="/?categoria=Lácteos">
+            🥛 Lácteos
+        </a>
+
+        <a href="/?categoria=Bebidas">
+            🥤 Bebidas
+        </a>
+
+        <a href="/?categoria=Limpieza">
+            🧴 Limpieza
+        </a>
+
+    </div>
 
     {% if productos|length == 0 %}
 
@@ -81,6 +108,14 @@
 
             {% if producto.id == 4 %}
             <img src="https://metroio.vtexassets.com/arquivos/ids/342150-800-auto?v=638193154640170000">
+            {% endif %}
+
+            {% if producto.id == 5 %}
+            <img src="https://plazavea.vteximg.com.br/arquivos/ids/553934-1000-1000/20119706.jpg">
+            {% endif %}
+
+            {% if producto.id == 6 %}
+            <img src="https://plazavea.vteximg.com.br/arquivos/ids/554527-1000-1000/20280574.jpg">
             {% endif %}
 
             <h2>{{ producto.nombre }}</h2>
