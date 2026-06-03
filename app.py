@@ -105,7 +105,10 @@ def agregar(id):
 @app.route("/carrito")
 def ver_carrito():
 
-    total = sum(item["precio"] for item in carrito)
+    total = sum(
+        item["precio"] * item["cantidad"]
+        for item in carrito
+    )
 
     return render_template(
         "carrito.html",
