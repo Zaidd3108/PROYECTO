@@ -8,10 +8,42 @@ PASSWORD_CORRECTO = "3101"
 
 # PRODUCTOS
 productos = [
-    {"id": 1, "nombre": "Arroz Costeño", "precio": 4.50},
-    {"id": 2, "nombre": "Azúcar Rubia", "precio": 3.20},
-    {"id": 3, "nombre": "Leche Gloria", "precio": 5.90},
-    {"id": 4, "nombre": "Aceite Primor", "precio": 11.50}
+    {
+        "id": 1,
+        "nombre": "Arroz Costeño",
+        "precio": 4.50,
+        "categoria": "Abarrotes"
+    },
+    {
+        "id": 2,
+        "nombre": "Azúcar Rubia",
+        "precio": 3.20,
+        "categoria": "Abarrotes"
+    },
+    {
+        "id": 3,
+        "nombre": "Leche Gloria",
+        "precio": 5.90,
+        "categoria": "Lácteos"
+    },
+    {
+        "id": 4,
+        "nombre": "Aceite Primor",
+        "precio": 11.50,
+        "categoria": "Abarrotes"
+    },
+    {
+        "id": 5,
+        "nombre": "Coca Cola 3L",
+        "precio": 12.50,
+        "categoria": "Bebidas"
+    },
+    {
+        "id": 6,
+        "nombre": "Detergente Bolívar",
+        "precio": 8.90,
+        "categoria": "Limpieza"
+    }
 ]
 
 # CARRITO
