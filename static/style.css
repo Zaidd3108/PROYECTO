@@ -260,3 +260,45 @@ header {
 .categorias a:hover{
     background:#ffcc00;
 }
+
+/* DROPDOWN USUARIO */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    min-width: 180px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px;
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background: #f5f5f5;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
