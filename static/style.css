@@ -29,12 +29,28 @@ header {
     width: 50%;
 }
 
+.buscador form {
+    position: relative;
+}
+
 .buscador input {
     width: 100%;
-    padding: 15px;
+    padding: 15px 55px 15px 20px;
     border: none;
     border-radius: 30px;
     font-size: 16px;
+    outline: none;
+}
+
+.buscador button {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 22px;
 }
 
 .menu {
@@ -80,7 +96,7 @@ header {
     background: white;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
 }
 
@@ -128,7 +144,7 @@ header {
     padding: 40px;
     border-radius: 20px;
     width: 400px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
     text-align: center;
 }
 
@@ -197,7 +213,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .item-carrito a {
@@ -216,10 +232,10 @@ header {
     font-size: 20px;
 }
 
-.sin-resultados{
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
-    color:#d50000;
-    margin:40px;
+.sin-resultados {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #d50000;
+    margin: 40px;
 }
