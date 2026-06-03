@@ -84,10 +84,20 @@ def inicio():
 @app.route("/agregar/<int:id>")
 def agregar(id):
 
+    for item in carrito:
+
+        if item["id"] == id:
+            item["cantidad"] += 1
+            return redirect(url_for("inicio"))
+
     for producto in productos:
 
         if producto["id"] == id:
-            carrito.append(producto)
+
+            nuevo_producto = producto.copy()
+            nuevo_producto["cantidad"] = 1
+            carrito.append(nuevo_producto)
+            break
 
     return redirect(url_for("inicio"))
 
