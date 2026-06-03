@@ -16,7 +16,14 @@
         </div>
 
         <div class="buscador">
-            <input type="text" placeholder="¿Qué buscas hoy?">
+            <form method="GET" action="/">
+                <input 
+                type="text" 
+                name="buscar" 
+                placeholder="¿Qué buscas hoy?" 
+                value="{{ busqueda }}"
+                >
+            </form>
         </div>
 
         <div class="menu">
@@ -71,4 +78,5 @@
 
     </section>
 </body>
+
 </html>
