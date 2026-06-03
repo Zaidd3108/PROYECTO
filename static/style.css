@@ -302,3 +302,36 @@ header {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+/* CARRITO AVANZADO */
+
+.controles-cantidad{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.btn-cantidad{
+    text-decoration:none;
+    background:#ffd600;
+    color:black;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.btn-cantidad:hover{
+    background:#ffcc00;
+}
+
+.cantidad{
+    font-size:20px;
+    font-weight:bold;
+    min-width:25px;
+    text-align:center;
+}
