@@ -21,12 +21,7 @@
 
             <form method="GET" action="/" class="form-busqueda">
 
-                <input
-                    type="text"
-                    name="buscar"
-                    placeholder="¿Qué buscas hoy?"
-                    value="{{ busqueda }}"
-                >
+                <input type="text" name="buscar" placeholder="¿Qué buscas hoy?" value="{{ busqueda }}">
 
                 <button type="submit">🔍</button>
 
@@ -36,7 +31,35 @@
 
         <div class="menu">
 
-            <a href="/login">👤 Mi Cuenta</a>
+            {% if usuario %}
+
+            <div class="dropdown">
+
+                <button class="dropbtn">
+                    👤 {{ usuario }} ▼
+                </button>
+
+                <div class="dropdown-content">
+
+                    <a href="/compras">
+                        🛒 Mis compras
+                    </a>
+
+                    <a href="/logout">
+                        🚪 Cerrar sesión
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% else %}
+
+            <a href="/login">
+                👤 Mi Cuenta
+            </a>
+
+            {% endif %}
 
             <a href="/carrito">
                 🛍 Carrito ({{ carrito|length }})
@@ -115,7 +138,8 @@
             {% endif %}
 
             {% if producto.id == 6 %}
-            <img src="https://wongfood.vtexassets.com/arquivos/ids/757831-1600-auto?v=638768147471670000&width=1600&height=auto&aspect=true">
+            <img
+                src="https://wongfood.vtexassets.com/arquivos/ids/757831-1600-auto?v=638768147471670000&width=1600&height=auto&aspect=true">
             {% endif %}
 
             <h2>{{ producto.nombre }}</h2>
