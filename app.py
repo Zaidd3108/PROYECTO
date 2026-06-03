@@ -49,6 +49,7 @@ productos = [
 
 # CARRITO
 carrito = []
+historial_compras = []
 
 # PÁGINA PRINCIPAL
 @app.route("/")
@@ -213,6 +214,50 @@ def pagar():
         carrito=carrito,
         total=total,
         usuario=session.get("usuario")
+    )
+
+@app.route("/confirmar")
+def confirmar():
+
+    global carrito
+
+    total = sum(
+        item["precio"] * item["cantidad"]
+        for item in carrito
+    )
+
+    compra = {
+        "usuario": session.get("usuario", "Invitado"),
+        "productos": carrito.copy(),
+        "total": total
+    }
+
+    historial_compras.append(compra)
+
+    carrito = []
+
+    return render_template(
+        "boleta.html",
+        compra=compra
+    )
+
+
+@app.route("/compras")
+def compras():
+
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    compras_usuario = [
+        compra
+        for compra in historial_compras
+        if compra["usuario"] == session["usuario"]
+    ]
+
+    return render_template(
+        "compras.html",
+        compras=compras_usuario,
+        usuario=session["usuario"]
     )
 
 if __name__ == "__main__":
