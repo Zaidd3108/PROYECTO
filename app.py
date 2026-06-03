@@ -21,7 +21,7 @@ carrito = []
 @app.route("/")
 def inicio():
 
-    busqueda = request.args.get("buscar", "")
+    busqueda = request.args.get("buscar", "").strip()
 
     if busqueda:
         productos_filtrados = [
