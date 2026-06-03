@@ -133,10 +133,32 @@ def login():
             clase = "incorrecto"
 
     return render_template(
-        "login.html",
-        mensaje=mensaje,
-        clase=clase
-    )
+    "index.html",
+    productos=productos_filtrados,
+    carrito=carrito,
+    busqueda=busqueda,
+    categoria=categoria,
+    usuario=session.get("usuario")
+)
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/logout")
+def logout():
+
+    session.pop("usuario", None)
+
+    return redirect(url_for("inicio"))
+
+
+@app.route("/compras")
+def compras():
+
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    return render_template(
+        "compras.html",
+        usuario=session["usuario"]
+    )
