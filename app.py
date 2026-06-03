@@ -54,22 +54,28 @@ carrito = []
 def inicio():
 
     busqueda = request.args.get("buscar", "").strip()
+    categoria = request.args.get("categoria", "")
 
-    print("BUSQUEDA:", busqueda)
+    productos_filtrados = productos
+
+    if categoria:
+        productos_filtrados = [
+            p for p in productos_filtrados
+            if p["categoria"] == categoria
+        ]
 
     if busqueda:
         productos_filtrados = [
-            p for p in productos
+            p for p in productos_filtrados
             if busqueda.lower() in p["nombre"].lower()
         ]
-    else:
-        productos_filtrados = productos
 
     return render_template(
         "index.html",
         productos=productos_filtrados,
         carrito=carrito,
-        busqueda=busqueda
+        busqueda=busqueda,
+        categoria=categoria
     )
 
 # AGREGAR AL CARRITO
