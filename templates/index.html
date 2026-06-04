@@ -147,7 +147,7 @@
             <h2>{{ producto.nombre }}</h2>
 
             <p class="precio">
-                S/ {{ producto.precio }}
+                S/ {{ "%.2f"|format(producto.precio) }}
             </p>
 
             <a href="/agregar/{{ producto.id }}">
