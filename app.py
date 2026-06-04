@@ -69,7 +69,7 @@ def agregar(id):
             item["cantidad"] += 1
             return redirect(url_for("inicio"))
 
-    for producto in productos:
+    for producto in obtener_productos():
 
         if producto["id"] == id:
 
