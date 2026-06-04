@@ -36,7 +36,7 @@ def inicio():
     busqueda = request.args.get("buscar", "").strip()
     categoria = request.args.get("categoria", "")
 
-    productos_filtrados = productos
+    productos_filtrados = obtener_productos()
 
     if categoria:
         productos_filtrados = [
