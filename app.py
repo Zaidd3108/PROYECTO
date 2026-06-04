@@ -145,7 +145,26 @@ def login():
         if usuario == USUARIO_CORRECTO and password == PASSWORD_CORRECTO:
 
             session["usuario"] = usuario
+            return redirect(url_for("inicio"))
+        
+        conexion = sqlite3.connect("abarrotes.db")
 
+        cursor = conexion.cursor()
+
+        cursor.execute(
+            """
+            SELECT * FROM usuarios
+            WHERE usuario=? AND password=?
+            """,
+            (usuario, password)
+            )
+        
+        cliente = cursor.fetchone()
+
+        conexion.close()
+
+        if cliente:
+            session["usuario"] = usuario
             return redirect(url_for("inicio"))
 
         else:
