@@ -372,9 +372,10 @@ header {
     padding:15px;
 }
 
-.tabla-admin td{
-    padding:15px;
-    border-bottom:1px solid #ddd;
+.tabla-admin td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
 }
 
 .tabla-admin tr:hover{
