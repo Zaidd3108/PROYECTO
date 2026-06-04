@@ -14,6 +14,14 @@ CREATE TABLE IF NOT EXISTS productos(
 """)
 
 cursor.execute("""
+CREATE TABLE IF NOT EXISTS usuarios(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    usuario TEXT UNIQUE,
+    password TEXT
+)
+""")    
+
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS compras(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     usuario TEXT NOT NULL,
