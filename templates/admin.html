@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Administrador</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ⚙️ Panel Administrador
+    </div>
+
+    <div class="menu">
+        <a href="/">🏠 Volver</a>
+    </div>
+
+</header>
+
+<div class="carrito-page">
+
+    <h1>Productos registrados</h1>
+
+    <table class="tabla-admin">
+
+        <tr>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+        </tr>
+
+        {% for producto in productos %}
+
+        <tr>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>S/ {{ producto.precio }}</td>
+            <td>{{ producto.categoria }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
