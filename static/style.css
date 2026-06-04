@@ -355,3 +355,26 @@ header {
 .btn-pagar:hover{
     background:#218838;
 }
+
+/* ADMIN */
+
+.tabla-admin{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    margin-top:20px;
+}
+
+.tabla-admin th{
+    background:#ffd600;
+    padding:15px;
+}
+
+.tabla-admin td{
+    padding:15px;
+    border-bottom:1px solid #ddd;
+}
+
+.tabla-admin tr:hover{
+    background:#f8f8f8;
+}
