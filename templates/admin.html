@@ -41,7 +41,7 @@
         <tr>
             <td>{{ producto.id }}</td>
             <td>{{ producto.nombre }}</td>
-            <td>S/ {{ producto.precio }}</td>
+            <td>S/ {{ "%.2f"|format(producto.precio) }}</td>
             <td>{{ producto.categoria }}</td>
         </tr>
 
