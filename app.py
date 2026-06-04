@@ -226,5 +226,24 @@ def compras():
         usuario=session["usuario"]
     )
 
+@app.route("/admin")
+def admin():
+
+    conexion = sqlite3.connect("abarrotes.db")
+    conexion.row_factory = sqlite3.Row
+
+    cursor = conexion.cursor()
+
+    cursor.execute("SELECT * FROM productos")
+
+    productos = cursor.fetchall()
+
+    conexion.close()
+
+    return render_template(
+        "admin.html",
+        productos=productos
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)
