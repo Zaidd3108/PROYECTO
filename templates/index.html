@@ -29,41 +29,43 @@
 
         </div>
 
-        <div class="menu">
+        <a href="/admin">
+            ⚙️ Admin
+        </a>
 
-            {% if usuario %}
+        {% if usuario %}
 
-            <div class="dropdown">
+        <div class="dropdown">
 
-                <button class="dropbtn">
-                    👤 {{ usuario }} ▼
-                </button>
+            <button class="dropbtn">
+                👤 {{ usuario }} ▼
+            </button>
 
-                <div class="dropdown-content">
+            <div class="dropdown-content">
 
-                    <a href="/compras">
-                        🛒 Mis compras
-                    </a>
+                <a href="/compras">
+                    🛒 Mis compras
+                </a>
 
-                    <a href="/logout">
-                        🚪 Cerrar sesión
-                    </a>
-
-                </div>
+                <a href="/logout">
+                    🚪 Cerrar sesión
+                </a>
 
             </div>
 
-            {% else %}
+        </div>
 
-            <a href="/login">
-                👤 Iniciar Sesión
-            </a>
+        {% else %}
 
-            {% endif %}
+        <a href="/login">
+            👤 Iniciar Sesión
+        </a>
 
-            <a href="/carrito">
-                🛍 Carrito ({{ carrito|length }})
-            </a>
+        {% endif %}
+
+        <a href="/carrito">
+            🛍 Carrito ({{ carrito|length }})
+        </a>
 
         </div>
 
