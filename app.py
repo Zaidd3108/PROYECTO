@@ -248,5 +248,43 @@ def admin():
         productos=productos
     )
 
+@app.route("/registro", methods=["GET", "POST"])
+def registro():
+
+    mensaje = ""
+
+    if request.method == "POST":
+
+        usuario = request.form["usuario"]
+        password = request.form["password"]
+
+        try:
+
+            conexion = sqlite3.connect("abarrotes.db")
+
+            cursor = conexion.cursor()
+
+            cursor.execute(
+                """
+                INSERT INTO usuarios(usuario,password)
+                VALUES(?,?)
+                """,
+                (usuario, password)
+            )
+
+            conexion.commit()
+            conexion.close()
+
+            mensaje = "✅ Cuenta creada correctamente"
+
+        except:
+
+            mensaje = "❌ Ese usuario ya existe"
+
+    return render_template(
+        "registro.html",
+        mensaje=mensaje
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)
