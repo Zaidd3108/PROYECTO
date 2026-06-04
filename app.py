@@ -229,6 +229,9 @@ def compras():
 @app.route("/admin")
 def admin():
 
+    if session.get("usuario") != "Zaidd":
+        return redirect(url_for("inicio"))
+
     conexion = sqlite3.connect("abarrotes.db")
     conexion.row_factory = sqlite3.Row
 
