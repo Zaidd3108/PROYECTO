@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+import sqlite3
 
 app = Flask(__name__)
 app.secret_key = "abarrotes_joel_2026"
@@ -7,45 +8,22 @@ app.secret_key = "abarrotes_joel_2026"
 USUARIO_CORRECTO = "Zaidd"
 PASSWORD_CORRECTO = "3101"
 
-# PRODUCTOS
-productos = [
-    {
-        "id": 1,
-        "nombre": "Arroz Costeño",
-        "precio": 4.50,
-        "categoria": "Abarrotes"
-    },
-    {
-        "id": 2,
-        "nombre": "Azúcar Rubia",
-        "precio": 3.20,
-        "categoria": "Abarrotes"
-    },
-    {
-        "id": 3,
-        "nombre": "Leche Gloria",
-        "precio": 5.90,
-        "categoria": "Lácteos"
-    },
-    {
-        "id": 4,
-        "nombre": "Aceite Primor",
-        "precio": 11.50,
-        "categoria": "Abarrotes"
-    },
-    {
-        "id": 5,
-        "nombre": "Coca Cola 3L",
-        "precio": 12.50,
-        "categoria": "Bebidas"
-    },
-    {
-        "id": 6,
-        "nombre": "Detergente Bolívar",
-        "precio": 8.90,
-        "categoria": "Limpieza"
-    }
-]
+# PRODUCTOS DESDE SQLITE
+
+def obtener_productos():
+
+    conexion = sqlite3.connect("abarrotes.db")
+    conexion.row_factory = sqlite3.Row
+
+    cursor = conexion.cursor()
+
+    cursor.execute("SELECT * FROM productos")
+
+    productos = cursor.fetchall()
+
+    conexion.close()
+
+    return [dict(producto) for producto in productos]
 
 # CARRITO
 carrito = []
