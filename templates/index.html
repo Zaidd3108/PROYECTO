@@ -29,9 +29,11 @@
 
         </div>
 
-        <a href="/admin">
-            ⚙️ Admin
-        </a>
+        {% if usuario == "Zaidd" %}
+<a href="/admin">
+    ⚙️ Admin
+</a>
+{% endif %}
 
         {% if usuario %}
 
