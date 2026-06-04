@@ -22,6 +22,15 @@ CREATE TABLE IF NOT EXISTS usuarios(
 """)    
 
 cursor.execute("""
+CREATE TABLE IF NOT EXISTS carrito(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    usuario TEXT NOT NULL,
+    producto_id INTEGER NOT NULL,
+    cantidad INTEGER NOT NULL
+)
+""")
+
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS compras(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     usuario TEXT NOT NULL,
