@@ -48,41 +48,107 @@ CREATE TABLE IF NOT EXISTS detalle_compra(
 )
 """)
 
-cursor.execute("SELECT COUNT(*) FROM productos")
+cursor.execute("DELETE FROM productos")
 
-cantidad = cursor.fetchone()[0]
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Arroz Costeño', 4.50, 'Abarrotes')
+""")
 
-if cantidad == 0:
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Azúcar Rubia', 3.20, 'Abarrotes')
+""")
 
-    cursor.execute("""
-    INSERT INTO productos(nombre, precio, categoria)
-    VALUES ('Arroz Costeño', 4.50, 'Abarrotes')
-    """)
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Leche Gloria', 5.90, 'Lácteos')
+""")
 
-    cursor.execute("""
-    INSERT INTO productos(nombre, precio, categoria)
-    VALUES ('Azúcar Rubia', 3.20, 'Abarrotes')
-    """)
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Aceite Primor', 11.50, 'Abarrotes')
+""")
 
-    cursor.execute("""
-    INSERT INTO productos(nombre, precio, categoria)
-    VALUES ('Leche Gloria', 5.90, 'Lácteos')
-    """)
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Coca Cola 3L', 12.50, 'Bebidas')
+""")
 
-    cursor.execute("""
-    INSERT INTO productos(nombre, precio, categoria)
-    VALUES ('Aceite Primor', 11.50, 'Abarrotes')
-    """)
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Detergente Bolívar', 8.90, 'Limpieza')
+""")
 
-    cursor.execute("""
-    INSERT INTO productos(nombre, precio, categoria)
-    VALUES ('Coca Cola 3L', 12.50, 'Bebidas')
-    """)
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Fideos Don Vittorio', 2.80, 'Abarrotes')
+""")
 
-    cursor.execute("""
-    INSERT INTO productos(nombre, precio, categoria)
-    VALUES ('Detergente Bolívar', 8.90, 'Limpieza')
-    """)
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Atún Florida', 6.50, 'Abarrotes')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Galletas Oreo', 3.50, 'Abarrotes')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Yogurt Gloria', 4.20, 'Lácteos')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Queso Fresco', 8.50, 'Lácteos')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Mantequilla Gloria', 6.90, 'Lácteos')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Inca Kola 3L', 12.50, 'Bebidas')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Agua San Luis 2.5L', 3.50, 'Bebidas')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Jugo Frugos', 2.50, 'Bebidas')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Lejía Sapolio', 4.90, 'Limpieza')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Lavavajilla Ayudín', 5.20, 'Limpieza')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Papel Higiénico Elite', 14.90, 'Limpieza')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Shampoo Head & Shoulders', 18.50, 'Limpieza')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria)
+VALUES ('Jabón Bolívar', 2.20, 'Limpieza')
+""")
 
 conexion.commit()
 conexion.close()
