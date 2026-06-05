@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS productos(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
     precio REAL NOT NULL,
-    categoria TEXT NOT NULL
+    categoria TEXT NOT NULL,
+    imagen TEXT NOT NULL
 )
 """)
 
@@ -51,8 +52,8 @@ CREATE TABLE IF NOT EXISTS detalle_compra(
 cursor.execute("DELETE FROM productos")
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Arroz Costeño', 4.50, 'Abarrotes')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Arroz Costeño', 4.50, 'Abarrotes', 'arroz.jpg')
 """)
 
 cursor.execute("""
