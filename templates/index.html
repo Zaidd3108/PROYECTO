@@ -118,30 +118,7 @@
 
         <div class="card">
 
-            {% if producto.id == 1 %}
-            <img src="{{ url_for('static', filename='img/' + producto.imagen) }}">>
-            {% endif %}
-
-            {% if producto.id == 2 %}
-            <img src="https://plazavea.vteximg.com.br/arquivos/ids/26947514-512-512/20085254.jpg">
-            {% endif %}
-
-            {% if producto.id == 3 %}
-            <img src="https://corporacionliderperu.com/50720-large_default/gloria-leche-tarro-azul-gde-x-390-gr.jpg">
-            {% endif %}
-
-            {% if producto.id == 4 %}
-            <img src="https://plazavea.vteximg.com.br/arquivos/ids/30632030-450-450/20281566.jpg?v=638758944609130000">
-            {% endif %}
-
-            {% if producto.id == 5 %}
-            <img src="https://plazavea.vteximg.com.br/arquivos/ids/24844290-1000-1000/21130.jpg">
-            {% endif %}
-
-            {% if producto.id == 6 %}
-            <img
-                src="https://wongfood.vtexassets.com/arquivos/ids/757831-1600-auto?v=638768147471670000&width=1600&height=auto&aspect=true">
-            {% endif %}
+            <img src="{{ url_for('static', filename='img/' + producto.imagen) }}">
 
             <h2>{{ producto.nombre }}</h2>
 
