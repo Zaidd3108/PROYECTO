@@ -53,22 +53,22 @@ cursor.execute("DELETE FROM productos")
 
 cursor.execute("""
 INSERT INTO productos(nombre, precio, categoria, imagen)
-VALUES ('Arroz Costeño', 4.50, 'Abarrotes', 'arroz.jpg')
+VALUES ('Arroz Costeño', 24.90, 'Abarrotes', 'arroz.jpg')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Azúcar Rubia', 23.90, 'Abarrotes', 'azucar.jpg')
+""")
+
+cursor.execute("""
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Leche Gloria', 5.90, 'Lácteos', 'leche.jpg')
 """)
 
 cursor.execute("""
 INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Azúcar Rubia', 3.20, 'Abarrotes')
-""")
-
-cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Leche Gloria', 5.90, 'Lácteos')
-""")
-
-cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Aceite Primor', 11.50, 'Abarrotes')
+VALUES ('Aceite Primor', 11.50, 'Abarrotes', 'aceite.webp')
 """)
 
 cursor.execute("""
