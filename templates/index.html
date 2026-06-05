@@ -119,7 +119,7 @@
         <div class="card">
 
             {% if producto.id == 1 %}
-            <img src="https://plazavea.vteximg.com.br/arquivos/ids/27552446-450-450/433778.jpg?v=638313120991600000">
+            <img src="{{ url_for('static', filename='img/' + producto.imagen) }}">>
             {% endif %}
 
             {% if producto.id == 2 %}
