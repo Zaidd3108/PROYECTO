@@ -63,20 +63,45 @@ def inicio():
 @app.route("/agregar/<int:id>")
 def agregar(id):
 
-    for item in carrito:
+    if "usuario" not in session:
+        return redirect(url_for("login"))
 
-        if item["id"] == id:
-            item["cantidad"] += 1
-            return redirect(url_for("inicio"))
+    conexion = sqlite3.connect("abarrotes.db")
+    cursor = conexion.cursor()
 
-    for producto in obtener_productos():
+    cursor.execute(
+        """
+        SELECT * FROM carrito
+        WHERE usuario=? AND producto_id=?
+        """,
+        (session["usuario"], id)
+    )
 
-        if producto["id"] == id:
+    existe = cursor.fetchone()
 
-            nuevo_producto = producto.copy()
-            nuevo_producto["cantidad"] = 1
-            carrito.append(nuevo_producto)
-            break
+    if existe:
+
+        cursor.execute(
+            """
+            UPDATE carrito
+            SET cantidad = cantidad + 1
+            WHERE usuario=? AND producto_id=?
+            """,
+            (session["usuario"], id)
+        )
+
+    else:
+
+        cursor.execute(
+            """
+            INSERT INTO carrito(usuario, producto_id, cantidad)
+            VALUES(?,?,?)
+            """,
+            (session["usuario"], id, 1)
+        )
+
+    conexion.commit()
+    conexion.close()
 
     return redirect(url_for("inicio"))
 
