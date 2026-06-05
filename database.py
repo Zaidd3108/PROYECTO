@@ -58,7 +58,7 @@ VALUES ('Arroz Costeño', 24.90, 'Abarrotes', 'arroz.jpg')
 
 cursor.execute("""
 INSERT INTO productos(nombre, precio, categoria, imagen)
-VALUES ('Azúcar Rubia', 23.90, 'Abarrotes', 'azucar.jpg')
+VALUES ('Azúcar Rubia', 23.90, 'Abarrotes', 'azucar.png')
 """)
 
 cursor.execute("""
