@@ -574,7 +574,7 @@ def agregar_producto():
     if request.method == "POST":
 
         nombre = request.form["nombre"]
-        precio = request.form["precio"]
+        precio = float(request.form["precio"])
         categoria = request.form["categoria"]
         imagen = request.form["imagen"]
 
@@ -583,7 +583,7 @@ def agregar_producto():
 
         cursor.execute("""
         INSERT INTO productos(nombre, precio, categoria, imagen)
-        VALUES(?,?,?,?)
+        VALUES (?, ?, ?, ?)
         """, (nombre, precio, categoria, imagen))
 
         conexion.commit()
