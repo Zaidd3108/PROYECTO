@@ -304,18 +304,55 @@ def logout():
 
     return redirect(url_for("inicio"))
 
-#PAGAR
+# PAGAR
 @app.route("/pagar")
 def pagar():
 
-    total = sum(
-        item["precio"] * item["cantidad"]
-        for item in carrito
-    )
+    usuario = session.get("usuario", "Invitado")
+
+    conexion = sqlite3.connect("abarrotes.db")
+    conexion.row_factory = sqlite3.Row
+
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+        SELECT
+            carrito.producto_id,
+            carrito.cantidad,
+            productos.nombre,
+            productos.precio,
+            productos.imagen
+        FROM carrito
+        INNER JOIN productos
+        ON carrito.producto_id = productos.id
+        WHERE carrito.usuario = ?
+    """, (usuario,))
+
+    carrito_bd = cursor.fetchall()
+
+    conexion.close()
+
+    carrito_lista = []
+    total = 0
+
+    for item in carrito_bd:
+
+        subtotal = item["precio"] * item["cantidad"]
+
+        total += subtotal
+
+        carrito_lista.append({
+            "id": item["producto_id"],
+            "nombre": item["nombre"],
+            "precio": item["precio"],
+            "cantidad": item["cantidad"],
+            "imagen": item["imagen"],
+            "subtotal": subtotal
+        })
 
     return render_template(
         "pagar.html",
-        carrito=carrito,
+        carrito=carrito_lista,
         total=total,
         usuario=session.get("usuario")
     )
