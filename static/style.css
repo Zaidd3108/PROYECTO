@@ -439,3 +439,18 @@ header a:hover{
     transform: scale(1.03);
     transition: 0.2s;
 }
+
+.btn-eliminar{
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.btn-eliminar:hover{
+    background: #b71c1c;
+}
