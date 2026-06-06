@@ -526,3 +526,12 @@ header a:hover{
     text-align: center;
     color: #d50000;
 }
+
+.tabla-admin tr:hover{
+    background: #fff8d6;
+    transition: 0.2s;
+}
+
+.tabla-admin{
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
