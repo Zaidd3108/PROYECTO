@@ -410,6 +410,7 @@ def compras():
         usuario=session["usuario"]
     )
 
+#ADMIN
 @app.route("/admin")
 def admin():
 
