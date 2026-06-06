@@ -103,7 +103,7 @@ def agregar(id):
     conexion.commit()
     conexion.close()
 
-    return redirect(url_for("inicio"))
+    return redirect(request.referrer)
 
 # VER CARRITO
 @app.route("/carrito")
