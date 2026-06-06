@@ -19,10 +19,16 @@ header {
     padding: 20px 40px;
 }
 
-.logo {
+.logo{
     font-size: 30px;
     font-weight: bold;
     color: #d50000;
+    text-decoration: none;
+}
+
+.logo:hover{
+    transform: scale(1.03);
+    transition: 0.2s;
 }
 
 .buscador {
