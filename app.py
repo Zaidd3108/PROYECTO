@@ -63,18 +63,17 @@ def inicio():
 @app.route("/agregar/<int:id>")
 def agregar(id):
 
-    if "usuario" not in session:
-        return redirect(url_for("login"))
-
     conexion = sqlite3.connect("abarrotes.db")
     cursor = conexion.cursor()
+
+    usuario = session.get("usuario", "Invitado")
 
     cursor.execute(
         """
         SELECT * FROM carrito
         WHERE usuario=? AND producto_id=?
         """,
-        (session["usuario"], id)
+        (usuario, id)
     )
 
     existe = cursor.fetchone()
@@ -87,7 +86,7 @@ def agregar(id):
             SET cantidad = cantidad + 1
             WHERE usuario=? AND producto_id=?
             """,
-            (session["usuario"], id)
+            (usuario, id)
         )
 
     else:
@@ -97,7 +96,7 @@ def agregar(id):
             INSERT INTO carrito(usuario, producto_id, cantidad)
             VALUES(?,?,?)
             """,
-            (session["usuario"], id, 1)
+            (usuario, id, 1)
         )
 
     conexion.commit()
