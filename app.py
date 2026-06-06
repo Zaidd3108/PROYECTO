@@ -519,5 +519,50 @@ def registro():
         mensaje=mensaje
     )
 
+#EDITAR PRODUCTOS
+@app.route("/editar_producto/<int:id>", methods=["GET", "POST"])
+def editar_producto(id):
+
+    if session.get("usuario") != "Zaidd":
+        return redirect(url_for("inicio"))
+
+    conexion = sqlite3.connect("abarrotes.db")
+    conexion.row_factory = sqlite3.Row
+
+    cursor = conexion.cursor()
+
+    if request.method == "POST":
+
+        nombre = request.form["nombre"]
+        precio = request.form["precio"]
+        categoria = request.form["categoria"]
+        imagen = request.form["imagen"]
+
+        cursor.execute("""
+        UPDATE productos
+        SET nombre=?, precio=?, categoria=?, imagen=?
+        WHERE id=?
+        """,
+        (nombre, precio, categoria, imagen, id))
+
+        conexion.commit()
+        conexion.close()
+
+        return redirect(url_for("admin"))
+
+    cursor.execute(
+        "SELECT * FROM productos WHERE id=?",
+        (id,)
+    )
+
+    producto = cursor.fetchone()
+
+    conexion.close()
+
+    return render_template(
+        "editar_producto.html",
+        producto=producto
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)
