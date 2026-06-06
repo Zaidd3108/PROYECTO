@@ -29,27 +29,25 @@ def obtener_productos():
 @app.route("/")
 def inicio():
 
-    busqueda = request.args.get("buscar", "").strip()
-    categoria = request.args.get("categoria", "")
-
-    productos_filtrados = obtener_productos()
-
-    if categoria:
-        productos_filtrados = [
-            p for p in productos_filtrados
-            if p["categoria"] == categoria
-        ]
-
-    if busqueda:
-        productos_filtrados = [
-            p for p in productos_filtrados
-            if busqueda.lower() in p["nombre"].lower()
-        ]
+    usuario = session.get("usuario", "Invitado")
+    
+    conexion = sqlite3.connect("abarrotes.db")
+    cursor = conexion.cursor()
+    
+    cursor.execute("""
+    SELECT COALESCE(SUM(cantidad),0)
+    FROM carrito
+    WHERE usuario = ?
+    """, (usuario,))
+    
+    cantidad_carrito = cursor.fetchone()[0]
+    
+    conexion.close()
 
     return render_template(
         "index.html",
         productos=productos_filtrados,
-        carrito=[],
+        cantidad_carrito=cantidad_carrito,
         busqueda=busqueda,
         categoria=categoria,
         usuario=session.get("usuario")
