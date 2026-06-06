@@ -319,29 +319,76 @@ def pagar():
         usuario=session.get("usuario")
     )
 
+# CONFIRMAR
 @app.route("/confirmar")
 def confirmar():
 
-    global carrito
+    usuario = session.get("usuario", "Invitado")
 
-    total = sum(
-        item["precio"] * item["cantidad"]
-        for item in carrito
-    )
+    conexion = sqlite3.connect("abarrotes.db")
+    conexion.row_factory = sqlite3.Row
 
-    compra = {
-        "usuario": session.get("usuario", "Invitado"),
-        "productos": carrito.copy(),
-        "total": total
-    }
+    cursor = conexion.cursor()
 
-    historial_compras.append(compra)
+    cursor.execute("""
+    SELECT
+        carrito.producto_id,
+        carrito.cantidad,
+        productos.nombre,
+        productos.precio
+    FROM carrito
+    INNER JOIN productos
+    ON carrito.producto_id = productos.id
+    WHERE carrito.usuario = ?
+    """, (usuario,))
 
-    carrito = []
+    productos = cursor.fetchall()
+
+    total = 0
+
+    for producto in productos:
+        total += producto["precio"] * producto["cantidad"]
+
+    cursor.execute("""
+    INSERT INTO compras(usuario,total)
+    VALUES(?,?)
+    """, (usuario, total))
+
+    compra_id = cursor.lastrowid
+
+    for producto in productos:
+
+        subtotal = producto["precio"] * producto["cantidad"]
+
+        cursor.execute("""
+        INSERT INTO detalle_compra(
+            compra_id,
+            producto,
+            cantidad,
+            subtotal
+        )
+        VALUES(?,?,?,?)
+        """,
+        (
+            compra_id,
+            producto["nombre"],
+            producto["cantidad"],
+            subtotal
+        ))
+
+    cursor.execute("""
+    DELETE FROM carrito
+    WHERE usuario = ?
+    """, (usuario,))
+
+    conexion.commit()
+    conexion.close()
 
     return render_template(
         "boleta.html",
-        compra=compra
+        productos=productos,
+        total=total,
+        usuario=usuario
     )
 
 #COMPRAS
