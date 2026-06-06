@@ -593,5 +593,25 @@ def agregar_producto():
 
     return render_template("agregar_producto.html")
 
+#ELIMINAR PRODUCTO
+@app.route("/eliminar_producto/<int:id>")
+def eliminar_producto(id):
+
+    if session.get("usuario") != "Zaidd":
+        return redirect(url_for("inicio"))
+
+    conexion = sqlite3.connect("abarrotes.db")
+    cursor = conexion.cursor()
+
+    cursor.execute(
+        "DELETE FROM productos WHERE id=?",
+        (id,)
+    )
+
+    conexion.commit()
+    conexion.close()
+
+    return redirect(url_for("admin"))
+
 if __name__ == "__main__":
     app.run(debug=True)
