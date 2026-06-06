@@ -380,3 +380,13 @@ header {
 .tabla-admin tr:hover{
     background:#f8f8f8;
 }
+
+header a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+header a:hover{
+    color: #d50000;
+}
