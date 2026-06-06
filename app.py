@@ -25,10 +25,6 @@ def obtener_productos():
 
     return [dict(producto) for producto in productos]
 
-# CARRITO
-carrito = []
-historial_compras = []
-
 # PÁGINA PRINCIPAL
 @app.route("/")
 def inicio():
