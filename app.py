@@ -564,5 +564,34 @@ def editar_producto(id):
         producto=producto
     )
 
+#AGREGAR PRODUCTOS
+@app.route("/agregar_producto", methods=["GET", "POST"])
+def agregar_producto():
+
+    if session.get("usuario") != "Zaidd":
+        return redirect(url_for("inicio"))
+
+    if request.method == "POST":
+
+        nombre = request.form["nombre"]
+        precio = request.form["precio"]
+        categoria = request.form["categoria"]
+        imagen = request.form["imagen"]
+
+        conexion = sqlite3.connect("abarrotes.db")
+        cursor = conexion.cursor()
+
+        cursor.execute("""
+        INSERT INTO productos(nombre, precio, categoria, imagen)
+        VALUES(?,?,?,?)
+        """, (nombre, precio, categoria, imagen))
+
+        conexion.commit()
+        conexion.close()
+
+        return redirect(url_for("admin"))
+
+    return render_template("agregar_producto.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
