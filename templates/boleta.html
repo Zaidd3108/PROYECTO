@@ -16,12 +16,12 @@
 
         <p>
             Cliente:
-            <strong>{{ compra.usuario }}</strong>
+            <strong>{{ usuario }}</strong>
         </p>
 
         <br>
 
-        {% for item in compra.productos %}
+        {% for item in productos %}
 
         <div class="item-carrito">
 
@@ -42,7 +42,7 @@
         <h2 class="total">
 
             TOTAL:
-            S/ {{ "%.2f"|format(compra.total) }}
+            S/ {{ "%.2f"|format(total) }}
 
         </h2>
 
