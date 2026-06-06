@@ -304,6 +304,7 @@ def logout():
 
     return redirect(url_for("inicio"))
 
+#PAGAR
 @app.route("/pagar")
 def pagar():
 
@@ -391,18 +392,28 @@ def confirmar():
         usuario=usuario
     )
 
-#COMPRAS
+# COMPRAS
 @app.route("/compras")
 def compras():
 
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    compras_usuario = [
-        compra
-        for compra in historial_compras
-        if compra["usuario"] == session["usuario"]
-    ]
+    conexion = sqlite3.connect("abarrotes.db")
+    conexion.row_factory = sqlite3.Row
+
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+        SELECT *
+        FROM compras
+        WHERE usuario = ?
+        ORDER BY id DESC
+    """, (session["usuario"],))
+
+    compras_usuario = cursor.fetchall()
+
+    conexion.close()
 
     return render_template(
         "compras.html",
