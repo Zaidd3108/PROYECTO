@@ -407,3 +407,17 @@ header a{
 header a:hover{
     color: #d50000;
 }
+
+.btn-editar{
+    background: #1976d2;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-editar:hover{
+    background: #1565c0;
+}
