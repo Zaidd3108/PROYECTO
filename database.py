@@ -53,102 +53,102 @@ cursor.execute("DELETE FROM productos")
 
 cursor.execute("""
 INSERT INTO productos(nombre, precio, categoria, imagen)
-VALUES ('Arroz Costeño', 24.90, 'Abarrotes', 'arroz.jpg')
+VALUES ('Arroz Costeño 5kg', 24.90, 'Abarrotes', 'arroz.webp')
 """)
 
 cursor.execute("""
 INSERT INTO productos(nombre, precio, categoria, imagen)
-VALUES ('Azúcar Rubia', 23.90, 'Abarrotes', 'azucar.png')
+VALUES ('Azúcar Rubia 5kg', 23.90, 'Abarrotes', 'azucar.png')
 """)
 
 cursor.execute("""
 INSERT INTO productos(nombre, precio, categoria, imagen)
-VALUES ('Leche Gloria', 5.90, 'Lácteos', 'leche.jpg')
+VALUES ('Leche Gloria 390g', 5.90, 'Lácteos', 'leche.jpg')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Aceite Primor', 11.50, 'Abarrotes', 'aceite.webp')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Aceite Primor 900ml', 11.50, 'Abarrotes', 'aceite.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Coca Cola 3L', 12.50, 'Bebidas')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Coca Cola 3L', 12.50, 'Bebidas', 'cocacola.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Detergente Bolívar', 8.90, 'Limpieza')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Detergente Bolívar 4kg', 8.90, 'Limpieza', 'detergente.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Fideos Don Vittorio', 2.80, 'Abarrotes')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Fideos Don Vittorio', 6.10, 'Abarrotes', 'spaguetti.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Atún Florida', 6.50, 'Abarrotes')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Atún Florida', 6.50, 'Abarrotes', 'atun.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Galletas Oreo', 3.50, 'Abarrotes')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Galletas Oreo', 3.50, 'Abarrotes', 'oreo.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Yogurt Gloria', 4.20, 'Lácteos')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Yogurt Gloria', 4.20, 'Lácteos', 'yogurt.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Queso Fresco', 8.50, 'Lácteos')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Queso Edam Laive', 22.90, 'Lácteos', 'queso.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Mantequilla Gloria', 6.90, 'Lácteos')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Mantequilla Laive', 10.20, 'Lácteos', 'mantequilla.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Inca Kola 3L', 12.50, 'Bebidas')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Inca Kola 3L', 12.50, 'Bebidas', 'incakola.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Agua San Luis 2.5L', 3.50, 'Bebidas')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Sprite 3L', 6.90, 'Bebidas', 'sprite.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Jugo Frugos', 2.50, 'Bebidas')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Frugos Fresh 3L', 7.20, 'Bebidas', 'frugos.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Lejía Sapolio', 4.90, 'Limpieza')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Lejía Sapolio 4.8kg', 10.30, 'Limpieza', 'lejia.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Lavavajilla Ayudín', 5.20, 'Limpieza')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Lavavajilla Lavax 700g', 5.80, 'Limpieza', 'lavavajilla.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Papel Higiénico Elite', 14.90, 'Limpieza')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Papel Higiénico Doble Hoja Elite 40un', 19.50, 'Limpieza', 'papelhigienico.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Shampoo Head & Shoulders', 18.50, 'Limpieza')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Shampoo Head & Shoulders Anti Comezón 375ml', 18.40, 'Limpieza', 'shampoo.webp')
 """)
 
 cursor.execute("""
-INSERT INTO productos(nombre, precio, categoria)
-VALUES ('Jabón Bolívar', 2.20, 'Limpieza')
+INSERT INTO productos(nombre, precio, categoria, imagen)
+VALUES ('Sixpack Jabón Protex 110g', 19.80, 'Limpieza', 'jabon.webp')
 """)
 
 conexion.commit()
