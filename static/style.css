@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #f5f5f5;
+    background: #b8b8b8;
 }
 
 /* HEADER */
@@ -109,8 +109,8 @@ header {
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.50);
 }
 
 .card img {
