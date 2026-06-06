@@ -154,36 +154,80 @@ def ver_carrito():
     )
 
 # ELIMINAR PRODUCTO
-@app.route("/eliminar/<int:index>")
-def eliminar(index):
+@app.route("/eliminar/<int:id>")
+def eliminar(id):
 
-    if index < len(carrito):
-        carrito.pop(index)
+    usuario = session.get("usuario", "Invitado")
+
+    conexion = sqlite3.connect("abarrotes.db")
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+    DELETE FROM carrito
+    WHERE usuario=? AND producto_id=?
+    """, (usuario, id))
+
+    conexion.commit()
+    conexion.close()
 
     return redirect(url_for("ver_carrito"))
 
+#SUMAR
 @app.route("/sumar/<int:id>")
 def sumar(id):
 
-    for item in carrito:
+    usuario = session.get("usuario", "Invitado")
 
-        if item["id"] == id:
-            item["cantidad"] += 1
+    conexion = sqlite3.connect("abarrotes.db")
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+    UPDATE carrito
+    SET cantidad = cantidad + 1
+    WHERE usuario=? AND producto_id=?
+    """, (usuario, id))
+
+    conexion.commit()
+    conexion.close()
 
     return redirect(url_for("ver_carrito"))
 
-
+#RESTAR
 @app.route("/restar/<int:id>")
 def restar(id):
 
-    for item in carrito:
+    usuario = session.get("usuario", "Invitado")
 
-        if item["id"] == id:
-            item["cantidad"] -= 1
-            if item["cantidad"] <= 0:
-                carrito.remove(item)
+    conexion = sqlite3.connect("abarrotes.db")
+    cursor = conexion.cursor()
 
-            break
+    cursor.execute("""
+    SELECT cantidad
+    FROM carrito
+    WHERE usuario=? AND producto_id=?
+    """, (usuario, id))
+
+    resultado = cursor.fetchone()
+
+    if resultado:
+
+        if resultado[0] > 1:
+
+            cursor.execute("""
+            UPDATE carrito
+            SET cantidad = cantidad - 1
+            WHERE usuario=? AND producto_id=?
+            """, (usuario, id))
+
+        else:
+
+            cursor.execute("""
+            DELETE FROM carrito
+            WHERE usuario=? AND producto_id=?
+            """, (usuario, id))
+
+    conexion.commit()
+    conexion.close()
 
     return redirect(url_for("ver_carrito"))
 
