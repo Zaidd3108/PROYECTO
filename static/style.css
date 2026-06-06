@@ -454,3 +454,58 @@ header a:hover{
 .btn-eliminar:hover{
     background: #b71c1c;
 }
+
+.form-admin{
+    max-width: 700px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.form-admin h1{
+    text-align: center;
+    margin-bottom: 30px;
+    color: #d50000;
+}
+
+.form-admin form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-admin label{
+    font-weight: bold;
+}
+
+.form-admin input,
+.form-admin select{
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.form-admin input:focus,
+.form-admin select:focus{
+    border-color: #ffd600;
+    outline: none;
+}
+
+.form-admin button{
+    margin-top: 15px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-admin button:hover{
+    background: #1b5e20;
+}
