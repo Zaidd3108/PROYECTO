@@ -509,3 +509,20 @@ header a:hover{
 .form-admin button:hover{
     background: #1b5e20;
 }
+
+.preview-admin{
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin: 15px auto;
+    display: block;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    background: white;
+    padding: 10px;
+}
+
+.form-admin h1{
+    text-align: center;
+    color: #d50000;
+}
