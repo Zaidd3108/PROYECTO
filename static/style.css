@@ -28,6 +28,7 @@ header {
     font-weight: bold;
     color: #d50000;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .logo:hover{
@@ -68,11 +69,12 @@ header {
     gap: 30px;
 }
 
-.menu a {
+.menu a{
     text-decoration: none;
     color: black;
     font-weight: bold;
     font-size: 18px;
+    cursor: pointer;
 }
 
 /* BANNER */
