@@ -60,7 +60,7 @@
 
             <label>Imagen del producto</label>
 
-            <input type="file" name="imagen" accept="image/*">
+            <input type="file" name="imagen" id="imagen" accept="image/*">
 
             <input type="hidden" name="imagen_actual" value="{{ producto.imagen }}">
 
@@ -70,7 +70,8 @@
                     Imagen actual
                 </p>
 
-                <img src="{{ url_for('static', filename='img/' + producto.imagen) }}" class="preview-admin">
+                <img id="preview" src="{{ url_for('static', filename='img/' + producto.imagen) }}"
+                    class="preview-admin">
 
             </div>
 
@@ -81,6 +82,30 @@
         </form>
 
     </div>
+
+    <script>
+
+        document.getElementById("imagen").addEventListener("change", function (event) {
+
+            const archivo = event.target.files[0];
+
+            if (archivo) {
+
+                const lector = new FileReader();
+
+                lector.onload = function (e) {
+
+                    document.getElementById("preview").src = e.target.result;
+
+                };
+
+                lector.readAsDataURL(archivo);
+
+            }
+
+        });
+
+    </script>
 
 </body>
 
