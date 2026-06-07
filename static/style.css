@@ -583,6 +583,16 @@ input[type="file"]{
     cursor: pointer;
 }
 
-*{
-    cursor: url("img/cursor.png") 8 8, auto;
+/* CURSOR PERSONALIZADO GLOBAL */
+
+*,
+*::before,
+*::after,
+a,
+button,
+input,
+select,
+textarea,
+label {
+    cursor: url("img/cursor.cur"), auto !important;
 }
