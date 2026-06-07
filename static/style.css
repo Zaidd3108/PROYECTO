@@ -582,3 +582,7 @@ select,
 input[type="file"]{
     cursor: pointer;
 }
+
+*{
+    cursor: url("img/cursor.cur"), auto;
+}
