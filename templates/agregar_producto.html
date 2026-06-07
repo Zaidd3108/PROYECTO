@@ -27,7 +27,8 @@
 
     <h1>Registrar Producto</h1>
 
-    <form method="POST">
+    <form method="POST"
+          enctype="multipart/form-data">
 
         <label>Nombre del producto</label>
 
@@ -72,13 +73,19 @@
 
         </select>
 
-        <label>Imagen</label>
+        <label>Imagen del producto</label>
 
         <input
-            type="text"
+            type="file"
             name="imagen"
-            placeholder="ejemplo.webp"
+            id="imagen"
+            accept="image/*"
             required>
+
+        <img
+            id="preview"
+            class="preview-admin"
+            style="display:none;">
 
         <button type="submit">
             💾 Guardar Producto
@@ -87,6 +94,26 @@
     </form>
 
 </div>
+
+<script>
+
+const imagen = document.getElementById("imagen");
+const preview = document.getElementById("preview");
+
+imagen.addEventListener("change", function(){
+
+    const archivo = this.files[0];
+
+    if(archivo){
+
+        preview.src = URL.createObjectURL(archivo);
+        preview.style.display = "block";
+
+    }
+
+});
+
+</script>
 
 </body>
 
