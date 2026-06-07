@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
+from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
 app.secret_key = "abarrotes_joel_2026"
-
-from werkzeug.utils import secure_filename
-import os
 
 UPLOAD_FOLDER = "static/img"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
