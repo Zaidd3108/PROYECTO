@@ -535,3 +535,25 @@ header a:hover{
 .tabla-admin{
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
+
+/* CURSOR GENERAL */
+body{
+    cursor: default;
+}
+
+/* BOTONES Y ENLACES */
+a,
+button,
+.btn-editar,
+.btn-eliminar,
+.btn-agregar,
+.dropbtn{
+    cursor: pointer;
+}
+
+/* INPUTS */
+input,
+select,
+textarea{
+    cursor: text;
+}
