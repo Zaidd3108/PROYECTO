@@ -4,6 +4,12 @@ import sqlite3
 app = Flask(__name__)
 app.secret_key = "abarrotes_joel_2026"
 
+from werkzeug.utils import secure_filename
+import os
+
+UPLOAD_FOLDER = "static/img"
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
 # LOGIN
 USUARIO_CORRECTO = "Zaidd"
 PASSWORD_CORRECTO = "3101"
