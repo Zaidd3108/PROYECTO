@@ -540,13 +540,15 @@ def editar_producto(id):
 
         cursor.execute("""
         UPDATE productos
-        SET nombre=?, precio=?, categoria=?, imagen=?
+        SET nombre=?, 
+            precio=?, 
+            categoria=?, 
+            imagen=?
         WHERE id=?
         """,
         (nombre, precio, categoria, imagen, id))
 
         conexion.commit()
-        conexion.close()
 
         return redirect(url_for("admin"))
 
