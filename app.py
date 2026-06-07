@@ -536,6 +536,54 @@ def editar_producto(id):
 
     cursor = conexion.cursor()
 
+    if request.method == "POST":
+
+        nombre = request.form["nombre"]
+        precio = float(request.form["precio"])
+        categoria = request.form["categoria"]
+
+        imagen_actual = request.form["imagen_actual"]
+
+        archivo = request.files.get("imagen")
+
+        if archivo and archivo.filename != "":
+
+            nombre_archivo = secure_filename(archivo.filename)
+
+            archivo.save(
+                os.path.join(
+                    app.config["UPLOAD_FOLDER"],
+                    nombre_archivo
+                )
+            )
+
+            imagen = nombre_archivo
+
+        else:
+
+            imagen = imagen_actual
+
+        cursor.execute("""
+            UPDATE productos
+            SET nombre=?,
+                precio=?,
+                categoria=?,
+                imagen=?
+            WHERE id=?
+        """,
+        (
+            nombre,
+            precio,
+            categoria,
+            imagen,
+            id
+        ))
+
+        conexion.commit()
+        conexion.close()
+
+        return redirect(url_for("admin"))
+
     cursor.execute(
         "SELECT * FROM productos WHERE id=?",
         (id,)
@@ -543,11 +591,10 @@ def editar_producto(id):
 
     producto = cursor.fetchone()
 
-    if producto is None:
-        conexion.close()
-        return f"Producto con ID {id} no encontrado"
-
     conexion.close()
+
+    if producto is None:
+        return f"Producto con ID {id} no encontrado"
 
     return render_template(
         "editar_producto.html",
