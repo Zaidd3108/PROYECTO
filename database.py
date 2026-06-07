@@ -49,16 +49,6 @@ CREATE TABLE IF NOT EXISTS detalle_compra(
 )
 """)
 
-cursor.execute("""
-UPDATE productos
-SET nombre=?,
-    precio=?,
-    categoria=?,
-    imagen=?
-WHERE id=?
-""",
-(nombre, precio, categoria, imagen, id))
-
 cursor.execute("DELETE FROM productos")
 
 cursor.execute("""
