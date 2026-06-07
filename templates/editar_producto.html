@@ -72,15 +72,51 @@
 
         </select>
 
-        <label>Imagen</label>
+        <label>Imagen del producto</label>
 
-        <input
-            type="text"
-            name="imagen"
-            value="{{ producto.imagen }}"
-            required>
+        <select name="imagen" required>
 
-        <br>
+            <option value="arroz.jpg" {% if producto.imagen == "arroz.jpg" %}selected{% endif %}>Arroz Costeño</option>
+
+            <option value="azucar.png" {% if producto.imagen == "azucar.png" %}selected{% endif %}>Azúcar Rubia</option>
+
+            <option value="leche.jpg" {% if producto.imagen == "leche.jpg" %}selected{% endif %}>Leche Gloria</option>
+
+            <option value="aceite.webp" {% if producto.imagen == "aceite.webp" %}selected{% endif %}>Aceite Primor</option>
+
+            <option value="cocacola.webp" {% if producto.imagen == "cocacola.webp" %}selected{% endif %}>Coca Cola</option>
+
+            <option value="detergente.webp" {% if producto.imagen == "detergente.webp" %}selected{% endif %}>Detergente Bolívar</option>
+
+            <option value="spaguetti.webp" {% if producto.imagen == "spaguetti.webp" %}selected{% endif %}>Fideos Don Vittorio</option>
+
+            <option value="atun.webp" {% if producto.imagen == "atun.webp" %}selected{% endif %}>Atún Florida</option>
+
+            <option value="oreo.webp" {% if producto.imagen == "oreo.webp" %}selected{% endif %}>Galletas Oreo</option>
+
+            <option value="yogurt.webp" {% if producto.imagen == "yogurt.webp" %}selected{% endif %}>Yogurt Gloria</option>
+
+            <option value="queso.webp" {% if producto.imagen == "queso.webp" %}selected{% endif %}>Queso Edam</option>
+
+            <option value="mantequilla.webp" {% if producto.imagen == "mantequilla.webp" %}selected{% endif %}>Mantequilla</option>
+
+            <option value="incakola.webp" {% if producto.imagen == "incakola.webp" %}selected{% endif %}>Inca Kola</option>
+
+            <option value="sprite.webp" {% if producto.imagen == "sprite.webp" %}selected{% endif %}>Sprite</option>
+
+            <option value="frugos.webp" {% if producto.imagen == "frugos.webp" %}selected{% endif %}>Frugos</option>
+
+            <option value="lejia.webp" {% if producto.imagen == "lejia.webp" %}selected{% endif %}>Lejía Sapolio</option>
+
+            <option value="lavavajilla.webp" {% if producto.imagen == "lavavajilla.webp" %}selected{% endif %}>Lavavajilla</option>
+
+            <option value="papelhigienico.webp" {% if producto.imagen == "papelhigienico.webp" %}selected{% endif %}>Papel Higiénico</option>
+
+            <option value="shampoo.webp" {% if producto.imagen == "shampoo.webp" %}selected{% endif %}>Shampoo</option>
+
+            <option value="jabon.webp" {% if producto.imagen == "jabon.webp" %}selected{% endif %}>Jabón Protex</option>
+
+        </select>
 
         <img
             src="{{ url_for('static', filename='img/' + producto.imagen) }}"
