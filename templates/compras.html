@@ -24,27 +24,33 @@
 
         {% if compras %}
 
-            {% for compra in compras %}
+        {% for compra in compras %}
 
-                <div class="item-carrito">
+        <div class="item-carrito">
 
-                    <span>
-                        Compra #{{ loop.index }}
-                    </span>
+            <span>
+                Compra #{{ loop.index }}
+            </span>
 
-                    <span>
-                        S/ {{ "%.2f"|format(compra.total) }}
-                    </span>
+            <span>
+                S/ {{ "%.2f"|format(compra.total) }}
+            </span>
 
-                </div>
+            <a href="{{ url_for('eliminar_compra', id=compra.id) }}"
+                onclick="return confirm('¿Seguro que deseas eliminar esta compra?')"
+                style="color:red; font-weight:bold;">
+                🗑 Eliminar
+            </a>
 
-            {% endfor %}
+        </div>
+
+        {% endfor %}
 
         {% else %}
 
-            <p class="vacio">
-                No tienes compras registradas.
-            </p>
+        <p class="vacio">
+            No tienes compras registradas.
+        </p>
 
         {% endif %}
 
