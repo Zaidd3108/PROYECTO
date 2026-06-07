@@ -650,5 +650,42 @@ def eliminar_producto(id):
 
     return redirect(url_for("admin"))
 
+#ELIMINAR COMPRAS
+@app.route("/eliminar_compra/<int:id>")
+def eliminar_compra(id):
+
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conexion = sqlite3.connect("abarrotes.db")
+    cursor = conexion.cursor()
+
+    # Verificar que la compra pertenece al usuario
+    cursor.execute("""
+    SELECT usuario
+    FROM compras
+    WHERE id=?
+    """, (id,))
+
+    compra = cursor.fetchone()
+
+    if compra and compra[0] == session["usuario"]:
+
+        cursor.execute("""
+        DELETE FROM detalle_compra
+        WHERE compra_id=?
+        """, (id,))
+
+        cursor.execute("""
+        DELETE FROM compras
+        WHERE id=?
+        """, (id,))
+
+        conexion.commit()
+
+    conexion.close()
+
+    return redirect(url_for("compras"))
+
 if __name__ == "__main__":
     app.run(debug=True)
