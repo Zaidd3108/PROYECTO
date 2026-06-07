@@ -102,19 +102,23 @@ header {
     padding: 40px;
 }
 
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    text-align: center;
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
 
-    transition: all 0.3s ease;
+    transition:all .3s ease;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
 }
 
-.card:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.50);
+.card:hover{
+    transform:translateY(-6px) scale(1.03);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.25),
+    0 5px 15px rgba(0,0,0,.15);
 }
 
 .card img {
@@ -556,4 +560,8 @@ input,
 select,
 textarea{
     cursor: text;
+}
+
+html{
+    scroll-behavior:smooth;
 }
