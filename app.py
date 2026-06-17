@@ -493,23 +493,53 @@ def dashboard():
         return redirect(url_for("inicio"))
 
     conexion = sqlite3.connect("abarrotes.db")
+    conexion.row_factory = sqlite3.Row
+
     cursor = conexion.cursor()
 
-    # Total productos
+    # KPIs
     cursor.execute("SELECT COUNT(*) FROM productos")
     total_productos = cursor.fetchone()[0]
 
-    # Total usuarios
     cursor.execute("SELECT COUNT(*) FROM usuarios")
     total_usuarios = cursor.fetchone()[0]
 
-    # Total compras
     cursor.execute("SELECT COUNT(*) FROM compras")
     total_compras = cursor.fetchone()[0]
 
-    # Ventas totales
     cursor.execute("SELECT COALESCE(SUM(total),0) FROM compras")
     ventas_totales = cursor.fetchone()[0]
+
+    # Últimas compras
+    cursor.execute("""
+    SELECT usuario,total,id
+    FROM compras
+    ORDER BY id DESC
+    LIMIT 5
+    """)
+    ultimas_compras = cursor.fetchall()
+
+    # Top clientes
+    cursor.execute("""
+    SELECT usuario,
+           COUNT(*) as cantidad
+    FROM compras
+    GROUP BY usuario
+    ORDER BY cantidad DESC
+    LIMIT 5
+    """)
+    top_clientes = cursor.fetchall()
+
+    # Productos más vendidos
+    cursor.execute("""
+    SELECT producto,
+           SUM(cantidad) as vendidos
+    FROM detalle_compra
+    GROUP BY producto
+    ORDER BY vendidos DESC
+    LIMIT 5
+    """)
+    productos_vendidos = cursor.fetchall()
 
     conexion.close()
 
@@ -518,7 +548,10 @@ def dashboard():
         total_productos=total_productos,
         total_usuarios=total_usuarios,
         total_compras=total_compras,
-        ventas_totales=ventas_totales
+        ventas_totales=ventas_totales,
+        ultimas_compras=ultimas_compras,
+        top_clientes=top_clientes,
+        productos_vendidos=productos_vendidos
     )
 
 @app.route("/registro", methods=["GET", "POST"])
