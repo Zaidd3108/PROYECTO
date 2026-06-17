@@ -588,3 +588,30 @@ input[type="file"]{
 *:focus {
     cursor: url("https://cdn.cursors-4u.net/previews/normal-36306916-32.webp") 36 36, auto !important;
 }
+
+.dashboard{
+    display:flex;
+    gap:25px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:50px;
+}
+
+.card{
+    width:250px;
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.card h2{
+    margin-bottom:15px;
+}
+
+.card p{
+    font-size:35px;
+    font-weight:bold;
+    color:#2e7d32;
+}
