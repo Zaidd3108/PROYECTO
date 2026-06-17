@@ -2,51 +2,151 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
 
     <title>Dashboard</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
 
-<header>
+    <header>
 
-    <div class="logo">
-        📊 Dashboard
+        <div class="logo">
+            📊 Dashboard Administrativo
+        </div>
+
+        <div class="menu">
+            <a href="/admin">⬅ Volver</a>
+        </div>
+
+    </header>
+
+    <div class="dashboard">
+
+        <div class="card">
+            <h2>📦 Productos</h2>
+            <p>{{ total_productos }}</p>
+        </div>
+
+        <div class="card">
+            <h2>👤 Usuarios</h2>
+            <p>{{ total_usuarios }}</p>
+        </div>
+
+        <div class="card">
+            <h2>🛒 Compras</h2>
+            <p>{{ total_compras }}</p>
+        </div>
+
+        <div class="card">
+            <h2>💰 Ventas</h2>
+            <p>S/ {{ "%.2f"|format(ventas_totales) }}</p>
+        </div>
+
     </div>
 
-    <div class="menu">
-        <a href="/admin">⬅ Volver</a>
+    <div class="grafico">
+
+        <h2>🏆 Productos Más Vendidos</h2>
+
+        <canvas id="ventasChart"></canvas>
+
     </div>
 
-</header>
+    <div class="dashboard-tablas">
 
-<div class="dashboard">
+        <div class="tabla-box">
 
-    <div class="card">
-        <h2>📦 Productos</h2>
-        <p>{{ total_productos }}</p>
+            <h2>👑 Top Clientes</h2>
+
+            <table>
+
+                <tr>
+                    <th>Usuario</th>
+                    <th>Compras</th>
+                </tr>
+
+                {% for cliente in top_clientes %}
+                <tr>
+                    <td>{{ cliente.usuario }}</td>
+                    <td>{{ cliente.cantidad }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+        <div class="tabla-box">
+
+            <h2>🛒 Últimas Compras</h2>
+
+            <table>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Total</th>
+                </tr>
+
+                {% for compra in ultimas_compras %}
+                <tr>
+                    <td>{{ compra.id }}</td>
+                    <td>{{ compra.usuario }}</td>
+                    <td>S/ {{ compra.total }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+
+        </div>
+
     </div>
 
-    <div class="card">
-        <h2>👤 Usuarios</h2>
-        <p>{{ total_usuarios }}</p>
-    </div>
+    <script>
 
-    <div class="card">
-        <h2>🛒 Compras</h2>
-        <p>{{ total_compras }}</p>
-    </div>
+        const ctx = document.getElementById('ventasChart');
 
-    <div class="card">
-        <h2>💰 Ventas</h2>
-        <p>S/ {{ "%.2f"|format(ventas_totales) }}</p>
-    </div>
+        new Chart(ctx, {
 
-</div>
+            type: 'bar',
+
+            data: {
+
+                labels: [
+
+                    {% for producto in productos_vendidos %}
+"{{ producto.producto }}",
+{% endfor %}
+
+],
+
+            datasets: [{
+
+                label: 'Cantidad Vendida',
+
+                data: [
+
+                    {% for producto in productos_vendidos %}
+{{ producto.vendidos }},
+            {% endfor %}
+
+        ]
+
+}]
+
+}
+
+});
+
+    </script>
 
 </body>
+
 </html>
