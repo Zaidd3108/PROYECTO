@@ -594,24 +594,57 @@ input[type="file"]{
     gap:25px;
     justify-content:center;
     flex-wrap:wrap;
-    margin-top:50px;
+    margin:30px;
 }
 
 .card{
-    width:250px;
     background:white;
-    border-radius:15px;
+    width:250px;
     padding:25px;
+    border-radius:15px;
     text-align:center;
-    box-shadow:0 4px 15px rgba(0,0,0,.15);
-}
-
-.card h2{
-    margin-bottom:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
 }
 
 .card p{
-    font-size:35px;
+    font-size:32px;
     font-weight:bold;
     color:#2e7d32;
+}
+
+.grafico{
+    width:80%;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+
+.dashboard-tablas{
+    display:flex;
+    gap:30px;
+    margin:40px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.tabla-box{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    width:500px;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+
+.tabla-box table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.tabla-box th,
+.tabla-box td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
 }
