@@ -6,9 +6,6 @@
     <title>Panel Administrador</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <a href="/dashboard" class="btn-admin">
-        📊 Dashboard
-    </a>
 </head>
 
 <body>
@@ -28,6 +25,14 @@
     <div class="carrito-page">
 
         <h1>Productos registrados</h1>
+
+        <a href="/dashboard">
+            <button class="btn-agregar">
+                📊 Dashboard
+            </button>
+        </a>
+
+        <br><br>
 
         <a href="/agregar_producto">
             <button class="btn-agregar">
