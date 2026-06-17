@@ -486,6 +486,41 @@ def admin():
         productos=productos
     )
 
+@app.route("/dashboard")
+def dashboard():
+
+    if session.get("usuario") != "Zaidd":
+        return redirect(url_for("inicio"))
+
+    conexion = sqlite3.connect("abarrotes.db")
+    cursor = conexion.cursor()
+
+    # Total productos
+    cursor.execute("SELECT COUNT(*) FROM productos")
+    total_productos = cursor.fetchone()[0]
+
+    # Total usuarios
+    cursor.execute("SELECT COUNT(*) FROM usuarios")
+    total_usuarios = cursor.fetchone()[0]
+
+    # Total compras
+    cursor.execute("SELECT COUNT(*) FROM compras")
+    total_compras = cursor.fetchone()[0]
+
+    # Ventas totales
+    cursor.execute("SELECT COALESCE(SUM(total),0) FROM compras")
+    ventas_totales = cursor.fetchone()[0]
+
+    conexion.close()
+
+    return render_template(
+        "dashboard.html",
+        total_productos=total_productos,
+        total_usuarios=total_usuarios,
+        total_compras=total_compras,
+        ventas_totales=ventas_totales
+    )
+
 @app.route("/registro", methods=["GET", "POST"])
 def registro():
 
