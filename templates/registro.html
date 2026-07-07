@@ -5,53 +5,45 @@
     <meta charset="UTF-8">
     <title>Registro</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<div class="contenedor-login">
+    <div class="contenedor-login">
 
-    <div class="login-box">
+        <div class="login-box">
 
-        <h1>📝 Crear Cuenta</h1>
+            <h1>📝 Crear Cuenta</h1>
 
-        <form method="POST">
+            <form method="POST">
 
-            <input
-                type="text"
-                name="usuario"
-                placeholder="Usuario"
-                required
-            >
+                <input type="text" name="usuario" placeholder="Usuario" required>
 
-            <input
-                type="password"
-                name="password"
-                placeholder="Contraseña"
-                required
-            >
+                <input type="email" name="correo" placeholder="Correo electrónico" required>
 
-            <button type="submit">
-                REGISTRARSE
-            </button>
+                <input type="password" name="password" placeholder="Contraseña" required>
 
-        </form>
+                <button type="submit">
+                    ENVIAR CÓDIGO
+                </button>
 
-        {% if mensaje %}
-        <div class="mensaje">
-            {{ mensaje }}
+            </form>
+
+            {% if mensaje %}
+            <div class="mensaje">
+                {{ mensaje }}
+            </div>
+            {% endif %}
+
+            <a href="/login" class="volver">
+                Ya tengo cuenta
+            </a>
+
         </div>
-        {% endif %}
-
-        <a href="/login" class="volver">
-            Ya tengo cuenta
-        </a>
 
     </div>
 
-</div>
-
 </body>
+
 </html>
