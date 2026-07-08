@@ -122,10 +122,9 @@
                 labels: [
 
                     {% for producto in productos_vendidos %}
-"{{ producto.producto }}",
-{% endfor %}
-
-],
+                    "{{ producto.producto }}",
+                    {% endfor %}
+                ],
 
             datasets: [{
 
@@ -134,16 +133,12 @@
                 data: [
 
                     {% for producto in productos_vendidos %}
-{{ producto.vendidos }},
-            {% endfor %}
-
-        ]
-
-}]
-
-}
-
-});
+                    {{ producto.vendidos }},
+                    {% endfor %}
+                 ]
+                }]
+            }
+        });
 
     </script>
 
