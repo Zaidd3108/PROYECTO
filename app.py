@@ -1,8 +1,12 @@
+# IMPORTACIÓN DE LIBRERÍAS
 from flask import Flask, render_template, request, redirect, url_for, session
+
+# CONEXIÓN A LA BASE DE DATOS
 import sqlite3
 from werkzeug.utils import secure_filename
 import os
 
+# CONFIGURACIÓN DE FLASK
 app = Flask(__name__)
 app.secret_key = "abarrotes_joel_2026"
 
